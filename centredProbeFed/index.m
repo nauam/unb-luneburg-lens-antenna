@@ -17,10 +17,10 @@ function index
 
     %Diagrama de Campo Distante
     diag_f = farField(n,b3nN(:,1));
-    diagram(diag,n,diag_f);
+    diagram(diag,n,diag_f,"Diagrama de Campo Distante",35,30,5);
     
     %Diagrama de Diretividade
     diag_d = directivity(n,b3nN(:,1));
-    diagram(diag,n,diag_d);
+    diagram(diag,n,diag_d,"Diagrama de Diretividade",80,30,5);
     
 end

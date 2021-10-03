@@ -11,12 +11,12 @@ function an_erroRelativo
     
     for k0r_ = k0r
         
-        [r__s,r,th_r,ep_r,mu_r] = str_probeFed(k0r_,k0,r_s,r1,r2,ang1,ang2,er);
+        [r__s,r,th_r,ep_r,mu_r] = centredProbeFed(k0r_,k0,r_s,r1,r2,ang1,ang2,er);
 
         %Metodo de Regularização Analítica
         f = waitbar(0,strcat('n = ',num2str(n)));
         for n_ = 1:n+1
-            [X(1:n_*N,n_),~] = def_regularization(n_,N,k0,f_s,r__s,r,th_r,ep_r,mu_r);
+            [X(1:n_*N,n_),~] = regularization(n_,N,k0,f_s,r__s,r,th_r,ep_r,mu_r);
             waitbar(n_/n, f, sprintf(strcat('n_ = ´',num2str(n_),'` ´',num2str(n+1),'` e k0r = ´',num2str(k0r_),'´')))
         end
         delete(f)
