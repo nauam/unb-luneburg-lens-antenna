@@ -1,5 +1,5 @@
 function an_directivity
-clear all; double precision; format long; 
+clear all; double precision; format long; addpath(genpath('_functions'))
     n = 50; N = 2; frq = 9*10^9; k0  = 2*pi*frq/299792458;
     
     %Estrutura da Antena

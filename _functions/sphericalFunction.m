@@ -1,4 +1,4 @@
-function [Z1,Z3,K1,K3] = def_sphericalFunction(z,n)
+function [Z1,Z3,K1,K3] = sphericalFunction(z,n)
 double precision; format long;
 
 N = length(z);  Z1 = zeros(N,N,n);	Z3 = zeros(N,N,n);	K1 = zeros(N,N,n);	K3 = zeros(N,N,n);

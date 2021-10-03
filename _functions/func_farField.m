@@ -1,4 +1,4 @@
-function Ff = def_farField(n,b3n1)
+function Ff = farField(n,b3n1)
 double precision; format long;
 
     P1n = zeros(1001,n);
