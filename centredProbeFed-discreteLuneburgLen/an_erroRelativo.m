@@ -1,18 +1,17 @@
 function an_erroRelativo
     clear all; double precision; format long; 
-    addpath(genpath('_functions')); addpath(genpath('_structure')); addpath(genpath('_diagram'));
     
     %Estrutura da Antena
-    n = 145; N = 2; k0r = [80 90 100]; frq = 9*10^9; k0  = 2*pi*frq/299792458; X = zeros((n+1)*N,n+1); erro = zeros(n,length(k0r)); 
+    n = 200; N = 7; k0r = [90 100]; frq = 5*10^9; k0  = 2*pi*frq/299792458; X = zeros((n+1)*N,n+1); erro = zeros(n,length(k0r)); 
     
-    r1 = 1.000; ang1 = 18;  f_s = 1; er = 1.30; 
-    r2 = 0.970; ang2 = 160; r_s = r2; 
+                ang1 = 4; f_s = 1; 
+    tx = 0.990; ang2 = 2; r_s = tx; 
     
     i_ = 1;
     
     for k0r_ = k0r
         
-        [r__s,r,th_r,ep_r,mu_r] = centredProbeFed(k0r_,k0,r_s,r1,r2,ang1,ang2,er);
+        [r__s,r,th_r,ep_r,mu_r] = centredProbeFed_discreteLuneburgLen(k0r_,k0,r_s,tx,ang1,ang2,N);
 
         %Metodo de Regularização Analítica
         f = waitbar(0,strcat('n = ',num2str(n)));

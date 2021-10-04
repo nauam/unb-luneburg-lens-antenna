@@ -3,9 +3,9 @@ function an_radiatedPowerAndDirectivity
     addpath(genpath('_functions')); addpath(genpath('_structure')); addpath(genpath('_diagram'));
     
     %Estrutura da Antena
-    frq      = 9*10^9;          k0 = 2*pi*frq/299792458;        n   = 145;  N  =    2;
-    k0r_max  =    100;          r1 = 1.000;     ang1 =  18;     f_s =  1;   er = 1.30; 
-    k0r_step =   0.01;          r2 = 0.970;     ang2 = 160;     r_s = r2; 
+    frq      = 5*10^9;          k0 = 2*pi*frq/299792458;       n   = 140;   N  =    7;
+    k0r_max  =     100;                          ang1 = 2;     f_s =   1;
+    k0r_step =    0.01;          tx = 0.990;     ang2 = 4;     r_s =  tx; 
     k0r = 0:k0r_step:k0r_max;  
     
     Pr_norm = zeros(length(k0r),1);
@@ -13,7 +13,7 @@ function an_radiatedPowerAndDirectivity
     
     f = waitbar(0,strcat('k0r = ',num2str(length(k0r))));
     for k0r_ = k0r
-        [r__s,r,th_r,ep_r,mu_r] = centredProbeFed(k0r_,k0,r_s,r1,r2,ang1,ang2,er);
+        [r__s,r,th_r,ep_r,mu_r] = centredProbeFed_discreteLuneburgLen(k0r_,k0,r_s,tx,ang1,ang2,N);
 
         %Metodo de Regularização Analítica
         [~,b3nN] = regularization(n,N,k0,f_s,r__s,r,th_r,ep_r,mu_r);
@@ -39,13 +39,13 @@ function an_radiatedPowerAndDirectivity
     disp(p_key/100)
     
     %Gráfico Potência de radiação
-    figure(1)
+    figure(11)
     semilogy(1:length(k0r),Pr_norm,'Linewidth',2);  hold on
     findpeaks(-real(Pr_norm),'MinPeakProminence',1)
     findpeaks( real(Pr_norm),'MinPeakProminence',1)
     
     %Gráfico Maxima diretividade
-    figure(2)
+    figure(12)
     semilogy(1:length(k0r),direct,'Linewidth',2);  hold on
     findpeaks(-real(direct),'MinPeakProminence',1)
     findpeaks( real(direct),'MinPeakProminence',1)
