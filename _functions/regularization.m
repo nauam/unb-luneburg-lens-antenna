@@ -4,6 +4,7 @@ double precision; format long;
     Ykbn_   = zeros(N,n) ;  SunGbn_ = zeros(N,n,N,n);   Gbn  = zeros(N,N,n);    b3nN    = zeros(n,N);
     Yzbn_   = zeros(N,n) ;  Sun_    = zeros(N,n,N,n);   CZbn = zeros(N,N,n);
 
+    
     fk = 1./(      2*(1:n)+1 );             I   = eye(N*n);     i0 = 1:N  ;     Ii = diag(ones(1,(N-1)),-1);
     fz = 1./((1:n).*((1:n)+1));             I_N = eye(N)  ;     i1 = 2:N+1;     Is = diag(ones(1,(N-1)), 1);
 

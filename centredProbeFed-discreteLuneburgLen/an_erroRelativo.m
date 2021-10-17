@@ -2,10 +2,10 @@ function an_erroRelativo
     clear all; double precision; format long; 
     
     %Estrutura da Antena
-    n = 200; N = 7; k0r = [90 100]; frq = 5*10^9; k0  = 2*pi*frq/299792458; X = zeros((n+1)*N,n+1); erro = zeros(n,length(k0r)); 
+    n = 230; N = 7; k0r = [20.94]; frq = 5*10^9; k0  = 2*pi*frq/299792458; X = zeros((n+1)*N,n+1); erro = zeros(n,length(k0r)); 
     
                 ang1 = 4; f_s = 1; 
-    tx = 0.990; ang2 = 2; r_s = tx; 
+    tx = 0.97; ang2 = 2; r_s = tx; 
     
     i_ = 1;
     
@@ -31,7 +31,7 @@ function an_erroRelativo
     end
     
     %Gráfico
-    figure(1)
+    figure(3)
     semilogy(1:n,erro,'Linewidth',2);  hold on
     grid on; legend(legend_str);
     title(strcat('Lente de Luneburg Discreta,  = 18°,  r_2/r_1 = 0.97 e Th_2   = ',num2str(ang2))); 

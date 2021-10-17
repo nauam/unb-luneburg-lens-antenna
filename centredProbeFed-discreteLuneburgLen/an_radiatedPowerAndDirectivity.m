@@ -4,7 +4,7 @@ function an_radiatedPowerAndDirectivity
     
     %Estrutura da Antena
     frq      = 5*10^9;          k0 = 2*pi*frq/299792458;       n   = 140;   N  =    7;
-    k0r_max  =     100;                          ang1 = 2;     f_s =   1;
+    k0r_max  =     50;                          ang1 = 2;     f_s =   1;
     k0r_step =    0.01;          tx = 0.990;     ang2 = 4;     r_s =  tx; 
     k0r = 0:k0r_step:k0r_max;  
     

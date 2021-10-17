@@ -5,7 +5,7 @@ function index
     
     %Estrutura da Antena
     %Antena 1
-    k0r = 20.94; tx = 0.990; ang1 = 4; ang2 = 2; r_s = tx; f_s = 1;
+    k0r = 20.94; tx = 0.990; ang1 = 4; ang2 = 2; r_s = 1; f_s = 1;
     [r__s,r,th_r,ep_r,mu_r] = centredProbeFed_discreteLuneburgLen(k0r,k0,r_s,tx,ang1,ang2,N);
 
     %Metodo de Regularização Analítica
