@@ -117,19 +117,19 @@ function [XauN, XbuN, a3nN, b3nN, Gan, Gbn] = RegularizationFunction(n, N, omega
 
     end
 
-    Yzan = reshape(Yzan_, [N * n 1]);
-    Ykan = reshape(Ykan_, [N * n 1]);
-    Ykbn = reshape(Ykbn_, [N * n 1]);
-    Yzbn = reshape(Yzbn_, [N * n 1]);
+    %Sun e SunGabn sao indexados por [a(1..N); b(1..N)] para cada u,
+    %entao os vetores Y e X devem seguir a mesma ordem (intercalada por u).
+    Yk = reshape([Ykan_; Yzbn_], [2 * N * n 1]);
+    Yz = reshape([Yzan_; Ykbn_], [2 * N * n 1]);
     Sun = reshape(Sun_, [2 * N * n 2 * N * n]);
     SunGabn = reshape(SunGabn_, [2 * N * n 2 * N * n]);
 
-    Yn = [Ykan; Yzbn] + Sun * ([Yzan; Ykbn] - [Ykan; Yzbn]);
+    Yn = Yk + Sun * (Yz - Yk);
     Xu_ = (I - SunGabn) \ Yn;
 
-    XuN = reshape(Xu_, [N n 2]);
-    XauN = XuN(:, :, 1)';
-    XbuN = XuN(:, :, 2)';
+    XuN = reshape(Xu_, [2 * N n]);
+    XauN = XuN(1:N, :)';
+    XbuN = XuN(N + 1:end, :)';
 
     for n_ = 1:n
         a3nN(n_, :) = fk(n_) * (CKan(:, :, n_) \ XauN(n_, :)');
